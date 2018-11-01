@@ -25,8 +25,14 @@ class SearchInRotatedSortedArrayIITest {
     }
 
     @Test
-    void testSearch_3_of_1311() {
+    void testSearch_3_from_1311() {
         boolean result = searchInRotatedSortedArrayII.search(new int[]{1, 3, 1, 1}, 3);
+        Assertions.assertEquals(true, result);
+    }
+
+    @Test
+    void testSearch_0_from_120111() {
+        boolean result = searchInRotatedSortedArrayII.search(new int[]{1,2,0,1,1,1}, 0);
         Assertions.assertEquals(true, result);
     }
 }
