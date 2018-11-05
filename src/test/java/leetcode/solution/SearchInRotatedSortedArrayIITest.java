@@ -25,6 +25,12 @@ class SearchInRotatedSortedArrayIITest {
     }
 
     @Test
+    void testSearch_1_from_13() {
+        boolean result = searchInRotatedSortedArrayII.search(new int[]{1, 3}, 1);
+        Assertions.assertEquals(true, result);
+    }
+
+    @Test
     void testSearch_3_from_1311() {
         boolean result = searchInRotatedSortedArrayII.search(new int[]{1, 3, 1, 1}, 3);
         Assertions.assertEquals(true, result);

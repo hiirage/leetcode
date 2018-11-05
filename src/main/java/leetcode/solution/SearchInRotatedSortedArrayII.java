@@ -16,7 +16,8 @@ public class SearchInRotatedSortedArrayII {
             int end = nums[q - 1];
             int begin = nums[p];
 
-            if(mid < nums[p]) {
+            if(mid < begin) {
+                //nums rotated within mid
                 if(target > mid && target <= end){
                     return binarySearch(nums, target, m+1, q);
                 } else {
@@ -24,6 +25,7 @@ public class SearchInRotatedSortedArrayII {
                     continue;
                 }
             } else if(mid > end) {
+                //nums rotated across mid
                 if(target < mid && target >= begin){
                     return binarySearch(nums, target, p, m);
                 } else {
@@ -31,17 +33,27 @@ public class SearchInRotatedSortedArrayII {
                     continue;
                 }
             } else {
-                //still wrong
-                if(binarySearch(nums, target, p, m)) {
-                    return true;
+                // begin <= mid <= end
+                if(end > begin) {
+                    //well sorted
+                    return binarySearch(nums, target, p, q);
                 } else {
-                    p = m + 1;
-                    continue;
+                    //other situation
+                    return scanSearch(nums, target, p+1, q-1);
                 }
             }
 
         }
 
+        return false;
+    }
+
+    private boolean scanSearch(int[] nums, int target, int p, int q) {
+        for(int i = p; i < q; i++) {
+            if(target == nums[i]) {
+                return true;
+            }
+        }
         return false;
     }
 
